@@ -1,0 +1,55 @@
+<section class="hero hero--feature hero--compact">
+  <div class="hero__bg">
+    <picture>
+      <source type="image/webp" srcset="/assets/img/hero-contact-1000.webp 1000w, /assets/img/hero-contact-1400.webp 1400w, /assets/img/hero-contact-2000.webp 2000w" sizes="100vw">
+      <img src="/assets/img/hero-contact-1400.jpg" srcset="/assets/img/hero-contact-1000.jpg 1000w, /assets/img/hero-contact-1400.jpg 1400w, /assets/img/hero-contact-2000.jpg 2000w" sizes="100vw" width="2000" height="1333" alt="FIRST Team 79 Krunch members at the 2026 Orlando Regional" fetchpriority="high" decoding="async">
+    </picture>
+  </div>
+  <div class="container hero__inner">
+    <span class="eyebrow">Get in Touch</span>
+    <h1>Contact Us</h1>
+    <p class="lead">Have a question about joining, sponsoring, volunteering, or inviting us to an event? We would love to hear from you.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid grid--2" style="align-items:start;gap:var(--space-8)">
+    <div>
+      <span class="eyebrow">Reach the Team</span>
+      <h2>Say hello</h2>
+      <p class="prose">The best way to reach us is by email. We are a volunteer team, so please allow a little time for a reply.</p>
+      <p style="margin-top:var(--space-5)"><a class="btn btn--primary" href="mailto:team79krunch@gmail.com">team79krunch@gmail.com</a></p>
+      <div class="card" style="margin-top:var(--space-6)">
+        <h3 style="font-size:var(--step-1)">Where we meet</h3>
+        <p style="margin-bottom:0">East Lake Community Library<br>4125 East Lake Road, Palm Harbor, FL<br>Wednesdays at 5:30 pm (more during build season)</p>
+      </div>
+      <h3 style="font-size:var(--step-1);margin-top:var(--space-6)">Membership forms</h3>
+      <p style="line-height:2;margin-bottom:0">
+        <a href="/assets/forms/new-student-application.pdf" target="_blank">New Student Application</a><br>
+        <a href="/assets/forms/returning-student-form.pdf" target="_blank">Returning Student Form</a><br>
+        <a href="/assets/forms/volunteer-application.pdf" target="_blank">Volunteer Application</a>
+      </p>
+    </div>
+    <div>
+      <form class="form-grid" action="mailto:team79krunch@gmail.com" method="post" enctype="text/plain">
+        <div>
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="Name" type="text" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="Email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        </div>
+        <div>
+          <label for="cf-subject">Subject</label>
+          <input id="cf-subject" name="Subject" type="text">
+        </div>
+        <div>
+          <label for="cf-message">Your message</label>
+          <textarea id="cf-message" name="Message" rows="6" required></textarea>
+        </div>
+        <button class="btn btn--primary" type="submit" style="justify-self:start">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>

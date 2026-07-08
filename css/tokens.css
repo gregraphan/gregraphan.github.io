@@ -1,0 +1,68 @@
+/* Team 79 Krunch 2026 makeover — design tokens.
+   Palette = Krunch's own colors (navy anchor, gold accent), light-first canvas.
+   All text pairings meet WCAG 2.2 AA. */
+:root {
+  /* brand navy */
+  --navy-900: #001b38;
+  --navy-800: #002e5d; /* existing Krunch footer navy */
+  --navy-700: #093a70;
+  --navy-600: #0a4a8f;
+  --navy-500: #1160b0;
+
+  /* accents */
+  --gold-400: #ffd633;
+  --gold-500: #ffcb05; /* Krunch flag gold — fills only */
+  --gold-600: #d9a400; /* darker gold */
+  --gold-700: #846400; /* gold that passes WCAG AA (>=4.5:1) as text/icon on white + light tint */
+  --blue-500: #0088cb; /* FIRST-adjacent */
+  --red-500:  #ed1c24; /* energy/semantic only */
+
+  /* neutrals, cool-tinted toward navy */
+  --ink-900: #0e1726; /* body text */
+  --ink-700: #263244;
+  --ink-600: #46566d; /* secondary text (AA on white) */
+  --ink-400: #8a96a8; /* tertiary */
+  --line:    #dbe3ee;
+  --surface: #f4f8fd; /* tinted off-white section band */
+  --surface-2:#eaf1fa;
+  --white:   #ffffff;
+
+  /* semantic aliases */
+  --bg: var(--white);
+  --text: var(--ink-900);
+  --text-2: var(--ink-600);
+  --accent: var(--gold-500);
+  --accent-ink: var(--navy-900);
+  --link: var(--navy-600);
+
+  /* type */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --step--1: clamp(.83rem, .8rem + .15vw, .9rem);
+  --step-0:  clamp(1rem, .96rem + .2vw, 1.125rem);
+  --step-1:  clamp(1.2rem, 1.1rem + .5vw, 1.4rem);
+  --step-2:  clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3:  clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4:  clamp(2.6rem, 2rem + 3vw, 4.2rem);
+
+  /* spacing scale */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+  --space-9: 96px; --space-10: 128px;
+
+  /* radius */
+  --r-sm: 8px; --r-md: 14px; --r-lg: 22px; --r-pill: 999px;
+
+  /* elevation (light theme, tinted toward navy) */
+  --shadow-sm: 0 1px 2px rgba(16,32,64,.06), 0 2px 6px rgba(16,32,64,.06);
+  --shadow-card: 0 1px 2px rgba(16,32,64,.06), 0 10px 28px rgba(16,32,64,.10);
+  --shadow-lg: 0 2px 4px rgba(16,32,64,.08), 0 22px 48px rgba(16,32,64,.16);
+
+  /* layout */
+  --container: 1200px;
+  --pad-inline: clamp(16px, 5vw, 48px);
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 180ms;
+}

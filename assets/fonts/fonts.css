@@ -1,0 +1,4 @@
+/* Self-hosted variable fonts (latin subset) for the 2026 makeover. */
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url('/assets/fonts/space-grotesk.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/inter.woff2') format('woff2');}
+@font-face{font-family:'Rapscallion';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/rapscallion.woff2') format('woff2');}
