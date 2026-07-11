@@ -53,6 +53,7 @@ const PAGES = [
   { slug: 'volunteer', out: 'volunteer/index.html', nav: 'Volunteer', group: 'more', title: 'Volunteer & Mentor | FIRST Team 79 Krunch', desc: 'Mentor and volunteer opportunities with FIRST Team 79 Krunch for engineers and business professionals who want to inspire the next generation.' },
   { slug: 'sponsors', out: 'sponsors/index.html', nav: 'Sponsors', group: 'primary', title: 'Sponsors & Support | FIRST Team 79 Krunch', desc: 'Sponsor or donate to FIRST Team 79 Krunch through RTEF, a 501(c)(3) nonprofit. Sponsorship benefits, in-kind needs, matching gifts, grants, and ways to give.' },
   { slug: 'contact', out: 'contact/index.html', nav: 'Contact', group: 'primary', title: 'Contact | FIRST Team 79 Krunch', desc: 'Get in touch with FIRST Team 79 Krunch about joining, sponsoring, volunteering, or community outreach.' },
+  { slug: 'thanks', out: 'thanks/index.html', nav: null, group: null, title: 'Thank You | FIRST Team 79 Krunch', desc: 'Thanks for reaching out to FIRST Team 79 Krunch. We received your message and will be in touch.' },
 ];
 
 const PRIMARY = PAGES.filter((p) => p.group === 'primary');

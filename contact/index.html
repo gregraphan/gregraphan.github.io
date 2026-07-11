@@ -23,9 +23,9 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/rapscallion.woff2" crossorigin>
-<link rel="stylesheet" href="/css/tokens.css?v=ea4c30bc">
-<link rel="stylesheet" href="/assets/fonts/fonts.css?v=ea4c30bc">
-<link rel="stylesheet" href="/css/site.css?v=ea4c30bc">
+<link rel="stylesheet" href="/css/tokens.css?v=071b7b9a">
+<link rel="stylesheet" href="/assets/fonts/fonts.css?v=071b7b9a">
+<link rel="stylesheet" href="/css/site.css?v=071b7b9a">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SportsOrganization","name":"FIRST Team 79 Krunch","alternateName":"Team 79 Krunch","url":"https://team79krunch.com","logo":"https://team79krunch.com/assets/img/clock-logo.png?v=c777c6a1","foundingDate":"1997","sport":"FIRST Robotics Competition","address":{"@type":"PostalAddress","addressLocality":"Palm Harbor","addressRegion":"FL","addressCountry":"US"},"sameAs":["https://www.instagram.com/team79krunch","https://www.facebook.com/krunch79","https://www.youtube.com/channel/UCzrA9jdhqB923qp8KB-6EsA"]}</script>
 </head>
 <body>
@@ -87,21 +87,28 @@
     <div>
       <span class="eyebrow">Reach the Team</span>
       <h2>Say hello</h2>
-      <p class="prose">The best way to reach us is by email. We are a volunteer team, so please allow a little time for a reply.</p>
+      <p class="prose">The best way to reach us is by email, or use the form. We are an all-volunteer team, so please allow a little time for a reply. New to Krunch? You are welcome to simply visit a meeting, and parents are always welcome to reach out.</p>
       <p style="margin-top:var(--space-5)"><a class="btn btn--primary" href="mailto:team79krunch@gmail.com">team79krunch@gmail.com</a></p>
+      <figure class="photo-figure" style="margin-top:var(--space-6)">
+        <picture>
+          <source type="image/webp" srcset="/assets/img/card-interact-library-800.webp?v=3f5cd4be 800w, /assets/img/card-interact-library-1200.webp?v=ac203d15 1200w" sizes="(max-width:820px) 92vw, 46vw">
+          <img src="/assets/img/card-interact-library-1200.jpg?v=540a4290" srcset="/assets/img/card-interact-library-800.jpg?v=0dd25b86 800w, /assets/img/card-interact-library-1200.jpg?v=540a4290 1200w" sizes="(max-width:820px) 92vw, 46vw" width="1200" height="800" alt="Team 79 Krunch demonstrating their robot to families at the East Lake Community Library" loading="eager" fetchpriority="low" decoding="async">
+        </picture>
+        <figcaption>You'll find us at the East Lake Community Library</figcaption>
+      </figure>
       <div class="card" style="margin-top:var(--space-6)">
         <h3 style="font-size:var(--step-1)">Where we meet</h3>
-        <p style="margin-bottom:0">East Lake Community Library<br>4125 East Lake Road, Palm Harbor, FL<br>Wednesdays at 5:30 pm (more during build season)</p>
+        <p>East Lake Community Library<br>4125 East Lake Road, Palm Harbor, FL<br>Wednesdays at 5:30 pm (more during build season)</p>
+        <p style="margin-bottom:0"><a class="btn btn--link" href="https://www.google.com/maps/search/?api=1&amp;query=East+Lake+Community+Library%2C+4125+East+Lake+Rd%2C+Palm+Harbor%2C+FL+34685" target="_blank" rel="noopener">Get directions</a></p>
       </div>
-      <h3 style="font-size:var(--step-1);margin-top:var(--space-6)">Membership forms</h3>
-      <p style="line-height:2;margin-bottom:0">
-        <a href="/assets/forms/new-student-application.pdf" target="_blank">New Student Application</a><br>
-        <a href="/assets/forms/returning-student-form.pdf" target="_blank">Returning Student Form</a><br>
-        <a href="/assets/forms/volunteer-application.pdf" target="_blank">Volunteer Application</a>
-      </p>
     </div>
     <div>
-      <form class="form-grid" action="mailto:team79krunch@gmail.com" method="post" enctype="text/plain">
+      <form class="form-grid" action="https://formsubmit.co/team79krunch@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from the Krunch website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://gregraphan.github.io/thanks/">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div>
           <label for="cf-name">Name</label>
           <input id="cf-name" name="Name" type="text" autocomplete="name" required>
@@ -111,8 +118,15 @@
           <input id="cf-email" name="Email" type="email" autocomplete="email" placeholder="you@example.com" required>
         </div>
         <div>
-          <label for="cf-subject">Subject</label>
-          <input id="cf-subject" name="Subject" type="text">
+          <label for="cf-topic">What's this about?</label>
+          <select id="cf-topic" name="Reason for contacting">
+            <option>General question</option>
+            <option>Joining the team</option>
+            <option>Sponsoring or donating</option>
+            <option>Volunteering or mentoring</option>
+            <option>Inviting us to an event</option>
+            <option>Other</option>
+          </select>
         </div>
         <div>
           <label for="cf-message">Your message</label>
@@ -120,6 +134,18 @@
         </div>
         <button class="btn btn--primary" type="submit" style="justify-self:start">Send message</button>
       </form>
+      <h3 style="font-size:var(--step-1);margin-top:var(--space-7)">Follow us</h3>
+      <p style="display:flex;gap:var(--space-4);align-items:center;margin-top:var(--space-2)">
+        <a href="https://www.instagram.com/team79krunch" target="_blank" rel="noopener" aria-label="Follow Team 79 Krunch on Instagram"><img src="/assets/img/social-instagram.svg?v=66614f9d" alt="" width="34" height="34" loading="lazy"></a>
+        <a href="https://www.facebook.com/krunch79" target="_blank" rel="noopener" aria-label="Follow Team 79 Krunch on Facebook"><img src="/assets/img/social-facebook.svg?v=0b4f32b5" alt="" width="34" height="34" loading="lazy"></a>
+        <a href="https://www.youtube.com/channel/UCzrA9jdhqB923qp8KB-6EsA" target="_blank" rel="noopener" aria-label="Team 79 Krunch on YouTube"><img src="/assets/img/social-youtube.svg?v=a9ff12cc" alt="" width="34" height="34" loading="lazy"></a>
+      </p>
+      <h3 style="font-size:var(--step-1);margin-top:var(--space-6)">Membership forms</h3>
+      <p style="line-height:2;margin-bottom:0">
+        <a href="/assets/forms/new-student-application.pdf" target="_blank">New Student Application</a><br>
+        <a href="/assets/forms/returning-student-form.pdf" target="_blank">Returning Student Form</a><br>
+        <a href="/assets/forms/volunteer-application.pdf" target="_blank">Volunteer Application</a>
+      </p>
     </div>
   </div>
 </section>
@@ -166,6 +192,6 @@
     <p class="foot-disclosure">A COPY OF THE OFFICIAL REGISTRATION AND FINANCIAL INFORMATION MAY BE OBTAINED FROM THE DIVISION OF CONSUMER SERVICES BY CALLING 1-800-HELP-FLA (435-7352) WITHIN THE STATE OF FLORIDA. REGISTRATION DOES NOT IMPLY ENDORSEMENT, APPROVAL OR RECOMMENDATION BY THE STATE.</p>
   </div>
 </footer>
-<script src="/js/site.js?v=ea4c30bc"></script>
+<script src="/js/site.js?v=071b7b9a"></script>
 </body>
 </html>
