@@ -66,6 +66,13 @@
     els.forEach(function (el) { el.classList.add('in'); });
   }
 
+  // Live-calculated stats: e.g. [data-since="1998"] = one per year since 1998, inclusive
+  // (seasons competed). Recomputed in the browser so it stays correct every year with no edits.
+  [].slice.call(document.querySelectorAll('[data-since]')).forEach(function (el) {
+    var y = parseInt(el.getAttribute('data-since'), 10);
+    if (y) el.textContent = String(new Date().getFullYear() - y + 1);
+  });
+
   // Stat count-up: numbers tick from 0 to their value when scrolled into view.
   // Single 1-3 digit numbers only, so it animates counts (25+, 800+, $200) but leaves
   // years (1997) and ranges (12-18) and words (Open) alone. Honors reduced motion, and

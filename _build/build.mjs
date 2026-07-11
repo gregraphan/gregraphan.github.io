@@ -116,7 +116,7 @@ const navlink = (n, p) => `<a href="${rel(n.slug)}"${n.slug === p.slug ? ' aria-
 const header = (p) => `
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="brand" href="/" aria-label="FIRST Team 79 Krunch home"><span class="wordmark">Team 79 Krunch</span></a>
+    <a class="brand" href="/" aria-label="FIRST Team 79 Krunch home"><img class="brand__logo" src="/assets/img/krunch-logo.png" alt="" width="250" height="160" decoding="async"><span class="wordmark">Team 79 Krunch</span></a>
     <nav class="nav" aria-label="Primary">
       ${PRIMARY.map((n) => navlink(n, p)).join('\n      ')}
       <div class="nav-more">
@@ -168,7 +168,7 @@ const footer = () => `
         <img src="/assets/img/sponsor-smt.png" alt="SMT" height="34" loading="lazy" decoding="async">
         <img src="/assets/img/sponsor-library.png" alt="East Lake Community Library" height="34" loading="lazy" decoding="async">
       </div>
-      <p style="margin:0">&copy; 2026 <span class="first">FIRST</span>&reg; Team 79 Krunch / The Interact Club of Krunch Robotics</p>
+      <p style="margin:0">&copy; ${new Date().getFullYear()} <span class="first">FIRST</span>&reg; Team 79 Krunch / The Interact Club of Krunch Robotics</p>
     </div>
     <p class="foot-disclosure">A COPY OF THE OFFICIAL REGISTRATION AND FINANCIAL INFORMATION MAY BE OBTAINED FROM THE DIVISION OF CONSUMER SERVICES BY CALLING 1-800-HELP-FLA (435-7352) WITHIN THE STATE OF FLORIDA. REGISTRATION DOES NOT IMPLY ENDORSEMENT, APPROVAL OR RECOMMENDATION BY THE STATE.</p>
   </div>
@@ -177,12 +177,31 @@ const footer = () => `
 </body>
 </html>`;
 
+// Count every award entry in the "Awards by season" list. Each event line is
+// "<strong>Event</strong> &mdash; Award A, Award B"; awards are the comma-separated
+// items after the em dash, summed across all rows.
+function countAwards(src) {
+  let n = 0;
+  for (const body of src.match(/class="award-body">[\s\S]*?<\/div>/g) || []) {
+    for (const p of body.match(/<p>[\s\S]*?<\/p>/g) || []) {
+      const after = p.replace(/<[^>]+>/g, '').split('&mdash;').slice(1).join('&mdash;');
+      n += after.split(',').filter((s) => s.trim()).length;
+    }
+  }
+  return n;
+}
+
 let built = 0;
 for (const p of PAGES) {
   let main;
   try { main = await readFile(P('content', `${p.slug}.html`), 'utf8'); }
   catch { console.warn(`skip ${p.slug} (no content/${p.slug}.html yet)`); continue; }
   let html = head(p) + header(p) + '\n<main id="main" tabindex="-1">\n' + main.trim() + '\n</main>\n' + footer();
+  // Auto-calculated tokens (no annual manual edits). Seasons: 1 per year since 1998, inclusive.
+  html = html.replaceAll('{{SEASONS_SINCE_1998}}', String(new Date().getFullYear() - 1998 + 1));
+  // Awards Won: derived from the "Awards by season" list itself, so the hero stat
+  // can never drift from the list. Add an award to the list -> the count updates on rebuild.
+  html = html.replaceAll('{{TOTAL_AWARDS}}', String(countAwards(html)));
   html = await versionAssets(html);
   const outPath = P(p.out);
   await mkdir(path.dirname(outPath), { recursive: true });
