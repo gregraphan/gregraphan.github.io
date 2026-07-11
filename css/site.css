@@ -336,6 +336,11 @@ main:focus { outline: none; }
 .form-grid input, .form-grid select, .form-grid textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--r-sm); font: inherit; background: var(--surface); }
 .form-grid select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23335' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
 .form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus { outline: 3px solid var(--blue-500); outline-offset: 1px; background-color: #fff; }
+/* Contact form inline states (AJAX submit) */
+.form-success { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid #1f9d55; border-radius: var(--r-md); padding: var(--space-6); max-width: 560px; }
+.form-success h3 { margin: 0 0 var(--space-2); font-size: var(--step-1); color: var(--navy-800); }
+.form-success p { margin: 0; }
+.form-error { color: #b3261e; font-weight: 600; font-size: var(--step--1); margin: 0; }
 
 /* embed */
 .embed { position: relative; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-card); aspect-ratio: 16/9; background: var(--navy-900); }

@@ -101,4 +101,33 @@
     }, { threshold: 0.6 });
     countable.forEach(function (item) { cio.observe(item.el); });
   }
+
+  // Contact form: submit through FormSubmit's AJAX endpoint so the visitor stays
+  // on the page and gets an inline confirmation. If JS is off or fetch is missing,
+  // the form's normal action (POST + /thanks/ redirect) still works.
+  var cform = document.getElementById('contact-form');
+  if (cform) {
+    var cok = document.getElementById('contact-success');
+    var cerr = cform.querySelector('.form-error');
+    var cbtn = cform.querySelector('button[type="submit"]');
+    var endpoint = (cform.getAttribute('action') || '').replace('formsubmit.co/', 'formsubmit.co/ajax/');
+    cform.addEventListener('submit', function (e) {
+      if (!window.fetch || endpoint.indexOf('/ajax/') === -1) return; // native POST fallback
+      e.preventDefault();
+      if (cerr) cerr.hidden = true;
+      var label = cbtn ? cbtn.textContent : '';
+      if (cbtn) { cbtn.disabled = true; cbtn.textContent = 'Sending…'; }
+      fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(cform) })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (!(res.ok && (res.d.success === true || res.d.success === 'true'))) throw new Error('submit failed');
+          cform.hidden = true;
+          if (cok) { cok.hidden = false; if (cok.focus) cok.focus(); cok.scrollIntoView({ block: 'nearest' }); }
+        })
+        .catch(function () {
+          if (cerr) cerr.hidden = false;
+          if (cbtn) { cbtn.disabled = false; cbtn.textContent = label; }
+        });
+    });
+  }
 })();
