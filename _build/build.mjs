@@ -45,7 +45,7 @@ const PAGES = [
   { slug: 'team', out: 'team/index.html', nav: 'The Team', group: 'primary', title: 'The Team | FIRST Team 79 Krunch', desc: 'Meet FIRST Team 79 Krunch: an award-winning robotics team and Rotary Interact Club of students, mentors, and volunteers in Palm Harbor, Florida.' },
   { slug: 'first', out: 'first/index.html', nav: 'FIRST', group: 'primary', title: 'FIRST | Team 79 Krunch', desc: 'What is FIRST? For Inspiration and Recognition of Science and Technology, and the FIRST Robotics Competition that Team 79 Krunch has competed in since its inception.' },
   { slug: 'interact', out: 'interact/index.html', nav: 'Interact', group: 'primary', title: 'Interact | Team 79 Krunch', desc: 'Team 79 Krunch is also a Rotary Interact Club. Learn what Interact is, the benefits of joining, and about our sponsoring Rotary Club of East Lake Sunrise.' },
-  { slug: 'why-join', out: 'why-join/index.html', nav: 'Why Join Us', group: 'more', title: 'Why Join Us | FIRST Team 79 Krunch', desc: 'Joining Team 79 Krunch means being part of both a FIRST Robotics team and a Rotary Interact Club, with STEM skills, mentorship, scholarships, and community.' },
+  { slug: 'why-join', out: 'why-join/index.html', nav: null, group: null, redirect: '/join/', title: 'Why Join Us | FIRST Team 79 Krunch', desc: 'Why join FIRST Team 79 Krunch: STEM skills, mentorship, scholarships, and community. Now part of the Join page.' },
   { slug: 'awards', out: 'awards/index.html', nav: 'Awards', group: 'primary', title: 'Awards | FIRST Team 79 Krunch', desc: 'Team 79 Krunch competition awards and recognitions from 1998 through the 2024-2025 Space Coast Showdown, plus community honors and internship programs.' },
   { slug: 'outreach', out: 'outreach/index.html', nav: 'Outreach', group: 'primary', title: 'Community Outreach | FIRST Team 79 Krunch', desc: 'KrunchAid relief efforts, news features, community partnerships, and local outreach: how Team 79 Krunch serves the Tampa Bay area and beyond.' },
   { slug: 'events', out: 'events/index.html', nav: 'Events', group: 'more', title: 'Events & Calendar | FIRST Team 79 Krunch', desc: 'Upcoming competitions, demonstrations, and community events for FIRST Team 79 Krunch.' },
@@ -63,7 +63,7 @@ const bySlug = Object.fromEntries(PAGES.map((p) => [p.slug, p]));
 // Footer links grouped into scannable categories (better than one flat list).
 const FOOT_GROUPS = [
   { h: 'Explore', slugs: ['team', 'first', 'interact', 'awards', 'outreach'] },
-  { h: 'Get involved', slugs: ['join', 'why-join', 'volunteer', 'events', 'contact'] },
+  { h: 'Get involved', slugs: ['join', 'volunteer', 'events', 'contact'] },
 ];
 const rel = (slug) => (slug === 'home' ? '/' : `/${slug}/`);
 
@@ -194,6 +194,29 @@ function countAwards(src) {
 
 let built = 0;
 for (const p of PAGES) {
+  // Retired page -> emit a tiny redirect stub (meta refresh + JS + canonical to the
+  // target) so old links/bookmarks still land in the right place. No chrome.
+  if (p.redirect) {
+    const rhtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Redirecting&hellip;</title>
+<link rel="canonical" href="${SITE + p.redirect}">
+<meta name="robots" content="noindex, follow">
+<meta http-equiv="refresh" content="0; url=${p.redirect}">
+<script>location.replace(${JSON.stringify(p.redirect)});</script>
+</head>
+<body><p>This page has moved. If you are not redirected, <a href="${p.redirect}">continue to ${p.redirect}</a>.</p></body>
+</html>
+`;
+    const outPath = P(p.out);
+    await mkdir(path.dirname(outPath), { recursive: true });
+    await writeFile(outPath, rhtml);
+    built++;
+    console.log(`built ${p.out} (redirect -> ${p.redirect})`);
+    continue;
+  }
   let main;
   try { main = await readFile(P('content', `${p.slug}.html`), 'utf8'); }
   catch { console.warn(`skip ${p.slug} (no content/${p.slug}.html yet)`); continue; }

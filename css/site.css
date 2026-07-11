@@ -102,6 +102,9 @@ main:focus { outline: none; }
   border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: var(--shadow-card); padding: 6px;
   display: none; z-index: 110; }
 .nav-more:hover .nav-more__menu, .nav-more.is-open .nav-more__menu { display: block; }
+/* Invisible bridge across the 6px gap so the menu stays open while the pointer
+   travels from the button down to the items (no more "disappears unless fast"). */
+.nav-more__menu::before { content: ""; position: absolute; left: 0; right: 0; top: -8px; height: 8px; }
 .nav-more__menu a { display: block; padding: 9px 12px; border-radius: var(--r-sm); font-size: .96rem; color: var(--ink-700); text-decoration: none; }
 .nav-more__menu a:hover { background: var(--surface-2); color: var(--navy-800); }
 
