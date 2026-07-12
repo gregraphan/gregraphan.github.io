@@ -304,9 +304,9 @@ main:focus { outline: none; }
 @media (max-width: 560px) { .tiers { grid-template-columns: 1fr; } }
 
 /* needs / feature list */
-.needs { columns: 2; column-gap: var(--space-7); }
-.needs li { break-inside: avoid; margin-bottom: var(--space-3); }
-@media (max-width: 640px) { .needs { columns: 1; } }
+.needs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-7); row-gap: var(--space-3); align-items: start; }
+.needs li { margin: 0; }
+@media (max-width: 640px) { .needs { grid-template-columns: 1fr; } }
 
 /* FAQ */
 .faq details { border-bottom: 1px solid var(--line); padding: var(--space-4) 0; }
