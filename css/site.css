@@ -109,7 +109,7 @@ main:focus { outline: none; }
 .nav-more__menu a:hover { background: var(--surface-2); color: var(--navy-800); }
 
 /* mobile menu */
-@media (max-width: 1300px) {
+@media (max-width: 1024px) {
   .nav, .header-cta .btn--ghost { display: none; }
   .nav-toggle { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
     width: 44px; height: 44px; padding: 10px; background: none; border: 0; cursor: pointer; }
@@ -126,7 +126,7 @@ main:focus { outline: none; }
     font-size: var(--step-1); color: var(--navy-900); text-decoration: none; border-bottom: 1px solid var(--line); }
   .mobile-menu .btn { margin-top: var(--space-5); width: 100%; }
 }
-@media (min-width: 1301px) { .mobile-menu { display: none; } }
+@media (min-width: 1025px) { .mobile-menu { display: none; } }
 
 /* hero */
 .hero { position: relative; overflow: hidden; }
@@ -279,7 +279,7 @@ main:focus { outline: none; }
 @media (max-width: 560px) { .site-footer .foot-grid { grid-template-columns: 1fr; } }
 
 /* FIRST word mark: italic capitals per FIRST brand policy */
-.first { font-style: italic; }
+.first { font-style: italic; margin-right: 0.1em; }
 
 /* page pieces */
 .hero.band-navy { background: radial-gradient(120% 120% at 80% 0%, var(--navy-700) 0%, var(--navy-800) 45%, var(--navy-900) 100%); }

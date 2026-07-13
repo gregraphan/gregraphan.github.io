@@ -46,8 +46,8 @@ const PAGES = [
   { slug: 'first', out: 'first/index.html', nav: 'FIRST', group: 'primary', title: 'FIRST | Team 79 Krunch', desc: 'What is FIRST? For Inspiration and Recognition of Science and Technology, and the FIRST Robotics Competition that Team 79 Krunch has competed in since its inception.' },
   { slug: 'interact', out: 'interact/index.html', nav: 'Interact', group: 'primary', title: 'Interact | Team 79 Krunch', desc: 'Team 79 Krunch is also a Rotary Interact Club. Learn what Interact is, the benefits of joining, and about our sponsoring Rotary Club of East Lake Sunrise.' },
   { slug: 'why-join', out: 'why-join/index.html', nav: null, group: null, redirect: '/join/', title: 'Why Join Us | FIRST Team 79 Krunch', desc: 'Why join FIRST Team 79 Krunch: STEM skills, mentorship, scholarships, and community. Now part of the Join page.' },
-  { slug: 'awards', out: 'awards/index.html', nav: 'Awards', group: 'primary', title: 'Awards | FIRST Team 79 Krunch', desc: 'Team 79 Krunch competition awards and recognitions from 1998 through the 2024-2025 Space Coast Showdown, plus community honors and internship programs.' },
-  { slug: 'outreach', out: 'outreach/index.html', nav: 'Outreach', group: 'primary', title: 'Community Outreach | FIRST Team 79 Krunch', desc: 'KrunchAid relief efforts, news features, community partnerships, and local outreach: how Team 79 Krunch serves the Tampa Bay area and beyond.' },
+  { slug: 'awards', out: 'awards/index.html', nav: 'Awards', group: 'more', title: 'Awards | FIRST Team 79 Krunch', desc: 'Team 79 Krunch competition awards and recognitions from 1998 through the 2024-2025 Space Coast Showdown, plus community honors and internship programs.' },
+  { slug: 'outreach', out: 'outreach/index.html', nav: 'Outreach', group: 'more', title: 'Community Outreach | FIRST Team 79 Krunch', desc: 'KrunchAid relief efforts, news features, community partnerships, and local outreach: how Team 79 Krunch serves the Tampa Bay area and beyond.' },
   { slug: 'events', out: 'events/index.html', nav: 'Events', group: 'more', title: 'Events | FIRST Team 79 Krunch', desc: 'See FIRST Team 79 Krunch compete: recent regional results, where to catch us in person, and how to follow the season.' },
   { slug: 'join', out: 'join/index.html', nav: 'Join', group: 'primary', title: 'Join the Team | FIRST Team 79 Krunch', desc: 'Anyone ages 12-18 can join FIRST Team 79 Krunch. No experience needed. Membership, subteams, the season schedule, dues, mentor and volunteer roles, and how to apply.' },
   { slug: 'volunteer', out: 'volunteer/index.html', nav: 'Volunteer', group: 'more', title: 'Volunteer & Mentor | FIRST Team 79 Krunch', desc: 'Mentor and volunteer opportunities with FIRST Team 79 Krunch for engineers and business professionals who want to inspire the next generation.' },
@@ -63,7 +63,7 @@ const bySlug = Object.fromEntries(PAGES.map((p) => [p.slug, p]));
 // Footer links grouped into scannable categories (better than one flat list).
 const FOOT_GROUPS = [
   { h: 'Explore', slugs: ['team', 'first', 'interact', 'awards', 'outreach'] },
-  { h: 'Get involved', slugs: ['join', 'volunteer', 'events', 'contact'] },
+  { h: 'Get involved', slugs: ['join', 'volunteer', 'sponsors', 'events', 'contact'] },
 ];
 const rel = (slug) => (slug === 'home' ? '/' : `/${slug}/`);
 
