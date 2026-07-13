@@ -33,15 +33,17 @@
   }
 
   // Hero video: a bandwidth-gated enhancement. The team photo is the always-on
-  // fallback; the drone/robot video fades in on top only for good-bandwidth
-  // desktop visitors who haven't asked to reduce motion or save data.
+  // fallback; the drone/robot video fades in on top for any visitor on a good
+  // connection (desktop OR mobile) who hasn't asked to reduce motion or save data.
+  // Bandwidth is gated wherever it's measurable (navigator.connection — e.g.
+  // Android/Chrome). iOS Safari doesn't expose it, so there we play optimistically:
+  // the clip is small (~5 MB), muted, and preload="none" so nothing loads unless it plays.
   var heroVid = document.querySelector('[data-hero-video]');
   if (heroVid) {
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var c = navigator.connection || {};
     var stingy = c.saveData === true || (typeof c.effectiveType === 'string' && /(slow-2g|2g|3g)/.test(c.effectiveType));
-    var bigScreen = window.matchMedia('(min-width: 900px)').matches;
-    if (!reduceMotion && !stingy && bigScreen) {
+    if (!reduceMotion && !stingy) {
       var heroSection = heroVid.closest('.hero--feature');
       heroVid.addEventListener('playing', function () {
         if (heroSection) heroSection.classList.add('hero-video-on');
